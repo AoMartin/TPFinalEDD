@@ -42,7 +42,7 @@ namespace ControlDePatentes
             Console.WriteLine("6. Listar última patente.");
             Console.WriteLine("7. Listar primera patente.");
             Console.WriteLine("8. Cantidad de patentes.");
-            Console.WriteLine("9. Opcion inventada 1.");
+            Console.WriteLine("9. Cargar lista patentes pregrabadas.");
             Console.WriteLine("10. Opcion inventada 2.");
             Console.WriteLine("11. Salir ");
         }
@@ -76,10 +76,10 @@ namespace ControlDePatentes
                     CantidadPatentes(pilaPatentes);
                     break;
                 case 9:
-                    Opcion1(pilaPatentes);
+                    pilaPatentes = OpcionCustom1(pilaPatentes);
                     break;
                 case 10:
-                    Opcion2(pilaPatentes);
+                    pilaPatentes = OpcionCustom2(pilaPatentes);
                     break;
                 case 11:
                     Console.WriteLine("\n-SALIR-");
@@ -134,6 +134,8 @@ namespace ControlDePatentes
                 Console.WriteLine("-No existe una pila para guardar las patentes!-");
                 return null;
             }
+
+
         }
 
         static Stack<string> BorrarPatente(Stack<string> pilaPatentes)
@@ -207,14 +209,28 @@ namespace ControlDePatentes
             Console.WriteLine("Cantidad de patentes en la pila: " + pilaPatentes.Count);
         }
 
-        static void Opcion1(Stack<string> pilaPatentes)
+        static Stack<string> OpcionCustom1(Stack<string> pilaPatentes)
         {
-            Console.WriteLine("- 9. Opcion inventada 1.");
+            Console.WriteLine("- 9. Cargar lista patentes pregrabadas");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para guardar las patentes!-");
+                return null;
+            }
+            string[] listaPregrabada = new string[] { "ABC123", "HJI458" , "DJS789" , "ABC135" , "HIJ254" , "MUL162" , "RAM645" , "TER562" , "MAO020" };
+
+            foreach(string patente in listaPregrabada)
+            {
+                pilaPatentes.Push(patente);
+            }
+            Console.WriteLine("-Se añadieron las patentes pregrabadas a la pila-");
+            return pilaPatentes;
         }
 
-        static void Opcion2(Stack<string> pilaPatentes)
+        static Stack<string> OpcionCustom2(Stack<string> pilaPatentes)
         {
             Console.WriteLine("- 10. Opcion inventada 2.");
+            return null;
         }
     }
 }
