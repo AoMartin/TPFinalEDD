@@ -39,11 +39,11 @@ namespace ControlDePatentes
             Console.WriteLine("3. Agregar patente");
             Console.WriteLine("4. Borrar patente");
             Console.WriteLine("5. Listar todas las patentes");
-            Console.WriteLine("6. Listar última patente.");
-            Console.WriteLine("7. Listar primera patente.");
-            Console.WriteLine("8. Cantidad de patentes.");
-            Console.WriteLine("9. Cargar lista patentes pregrabadas.");
-            Console.WriteLine("10. Opcion inventada 2.");
+            Console.WriteLine("6. Listar última patente");
+            Console.WriteLine("7. Listar primera patente");
+            Console.WriteLine("8. Cantidad de patentes");
+            Console.WriteLine("9. Cargar lista patentes pregrabadas");
+            Console.WriteLine("10. Modificar patente");
             Console.WriteLine("11. Salir ");
         }
 
@@ -259,8 +259,84 @@ namespace ControlDePatentes
 
         static Stack<string> OpcionCustom2(Stack<string> pilaPatentes)
         {
-            Console.WriteLine("- 10. Opcion inventada 2.");
-            return null;
+            Console.WriteLine("- 10. Modificar patente.");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para modificar las patentes!-");
+                return null;
+            }
+
+            //Si desea listar primero las patentes en la pila para saber cual modificar
+            Console.WriteLine("-Desea primero listar las patentes?: (ingrese 'si' para aceptar)-");
+            string opcion = Console.ReadLine().ToLower();
+            if(opcion == "si")
+                ListarPatentes(pilaPatentes);
+
+            //Ahora se le pide al usuario ingrese el numero de orden en la pila de la patente a modificar
+            int ordenPatente = 0;
+            while(ordenPatente== 0)
+            {
+                try
+                {
+                    Console.WriteLine("* Ingrese el número de orden de la patente que desea modificar: ");
+                    ordenPatente = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("-Ingrese un número de orden válido-");
+                }
+            }
+
+            //Se crea una pila auxiliar para guardar los datos q se iran sacando de la principal
+            //hasta llegar al número de orden de la patente a modificar
+            Stack<string> aux = new Stack<string>();
+            while(pilaPatentes.Count != ordenPatente)
+            {
+                string aux_patente = pilaPatentes.Pop();
+                aux.Push(aux_patente);
+            }
+
+            Console.WriteLine("-Modificar la patente " + pilaPatentes.Peek() + " -");
+            string nuevaPatente = "";
+
+            while (nuevaPatente == "")
+            {
+                try
+                {
+                    Console.WriteLine("\n* Ingrese las 3 letras de la patente: ");
+                    string letras = Convert.ToString(Console.ReadLine());
+                    nuevaPatente = letras.ToUpper();
+                }
+                catch
+                {
+                    Console.WriteLine("\n-Por favor solo ingrese 3 letras-\n");
+                }
+            }
+            while (nuevaPatente.Length < 3)
+            {
+                try
+                {
+                    Console.WriteLine("\n* Ingrese los 3 números de la patente: ");
+                    int números = Convert.ToInt32(Console.ReadLine());
+                    nuevaPatente += números;
+                }
+                catch
+                {
+                    Console.WriteLine("\n-Por favor solo ingrese 3 números-\n");
+                }
+            }
+
+            //Se elimina la patente a modificar y se añade la nueva
+            pilaPatentes.Pop();
+            pilaPatentes.Push(nuevaPatente);
+            Console.WriteLine("\n-La patente fue modificada correctamente-\n");
+
+            //Se reconstruye la pila original
+            while(aux.Count == 0)
+            {
+                pilaPatentes.Push( aux.Pop() );
+            }
+            return pilaPatentes;
         }
     }
 }
