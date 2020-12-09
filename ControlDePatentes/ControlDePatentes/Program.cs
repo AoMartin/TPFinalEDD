@@ -149,21 +149,46 @@ namespace ControlDePatentes
         static void ListarPatentes(Stack<string> pilaPatentes)
         {
             Console.WriteLine("- 5. Listar todas las patentes");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para listar patentes!-");
+                return;
+            }
         }
 
         static void ListarPrimerPatente(Stack<string> pilaPatentes)
         {
             Console.WriteLine("- 6. Listar última patente.");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para listar patentes!-");
+                return;
+            }
+            Console.WriteLine("Ultima patente en la pila: ");
+            Console.WriteLine(pilaPatentes.Count + " - " + pilaPatentes.Peek());
         }
 
         static void ListarUltimaPatente(Stack<string> pilaPatentes)
         {
             Console.WriteLine("- 7. Listar primera patente.");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para listar patentes!-");
+                return;
+            }
+            Console.WriteLine("Primer patente en la pila: ");
+            //TODO
         }
 
         static void CantidadPatentes(Stack<string> pilaPatentes)
         {
             Console.WriteLine("- 8. Cantidad de patentes.");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para listar cantidad de patentes!-");
+                return;
+            }
+            Console.WriteLine("Cantidad de patentes en la pila: " + pilaPatentes.Count);
         }
 
         static void Opcion1(Stack<string> pilaPatentes)
