@@ -135,7 +135,37 @@ namespace ControlDePatentes
                 return null;
             }
 
+            string nuevaPatente = "";
 
+            while(nuevaPatente == "")
+            {
+                try
+                {
+                    Console.WriteLine("\n* Ingrese las 3 letras de la patente: ");
+                    string letras = Convert.ToString(Console.ReadLine());
+                    nuevaPatente = letras.ToUpper();
+                }
+                catch
+                {
+                    Console.WriteLine("\n-Por favor solo ingrese 3 letras-\n");
+                }
+            }
+            while (nuevaPatente.Length < 3)
+            {
+                try
+                {
+                    Console.WriteLine("\n* Ingrese los 3 números de la patente: ");
+                    int números = Convert.ToInt32(Console.ReadLine());
+                    nuevaPatente += números;
+                }
+                catch
+                {
+                    Console.WriteLine("\n-Por favor solo ingrese 3 números-\n");
+                }
+            }
+
+            pilaPatentes.Push(nuevaPatente);
+            return pilaPatentes;
         }
 
         static Stack<string> BorrarPatente(Stack<string> pilaPatentes)
