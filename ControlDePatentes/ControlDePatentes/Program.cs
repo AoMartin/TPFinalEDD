@@ -144,6 +144,9 @@ namespace ControlDePatentes
                 Console.WriteLine("-No existe una pila para borrar las patentes!-");
                 return null;
             }
+            string patenteBorrada = pilaPatentes.Pop();
+            Console.WriteLine("-Se borro la patente "+ patenteBorrada + " de la pila-");
+            return pilaPatentes;
         }
 
         static void ListarPatentes(Stack<string> pilaPatentes)
@@ -159,22 +162,11 @@ namespace ControlDePatentes
             foreach( string patente in pilaPatentes)
             {
                 Console.WriteLine(ordenPatente + " - " + patente);
+                ordenPatente++;
             }
         }
 
         static void ListarPrimerPatente(Stack<string> pilaPatentes)
-        {
-            Console.WriteLine("- 6. Listar última patente.");
-            if (pilaPatentes == null)
-            {
-                Console.WriteLine("-No existe una pila para listar patentes!-");
-                return;
-            }
-            Console.WriteLine("Ultima patente en la pila: ");
-            Console.WriteLine(pilaPatentes.Count + " - " + pilaPatentes.Peek());
-        }
-
-        static void ListarUltimaPatente(Stack<string> pilaPatentes)
         {
             Console.WriteLine("- 7. Listar primera patente.");
             if (pilaPatentes == null)
@@ -184,6 +176,18 @@ namespace ControlDePatentes
             }
             Console.WriteLine("Primer patente en la pila: ");
             //TODO
+        }
+
+        static void ListarUltimaPatente(Stack<string> pilaPatentes)
+        {
+            Console.WriteLine("- 6. Listar última patente.");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para listar patentes!-");
+                return;
+            }
+            Console.WriteLine("Ultima patente en la pila: ");
+            Console.WriteLine(pilaPatentes.Count + " - " + pilaPatentes.Peek());
         }
 
         static void CantidadPatentes(Stack<string> pilaPatentes)
