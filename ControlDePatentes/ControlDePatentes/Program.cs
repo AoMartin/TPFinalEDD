@@ -154,6 +154,12 @@ namespace ControlDePatentes
                 Console.WriteLine("-No existe una pila para listar patentes!-");
                 return;
             }
+
+            int ordenPatente = 1;
+            foreach( string patente in pilaPatentes)
+            {
+                Console.WriteLine(ordenPatente + " - " + patente);
+            }
         }
 
         static void ListarPrimerPatente(Stack<string> pilaPatentes)
