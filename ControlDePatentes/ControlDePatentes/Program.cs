@@ -9,7 +9,8 @@ namespace ControlDePatentes
         static void Main(string[] args)
         {
             int opcion = 0;
-            
+            Stack<string> pilaPatentes = null;
+
             while (opcion != 11)
             {
                 DibujarMenu();
@@ -19,8 +20,8 @@ namespace ControlDePatentes
                     Console.WriteLine("\n* Ingrese el número de la opción deseada: ");
                     opcion = Convert.ToInt32(Console.ReadLine());
 
-                    //Chequea la opcion elegida dentro de un switch
-                    ElegirOpcionMenu(opcion);
+                    //Chequea la opcion elegida dentro de un switch y alli modifica la pila
+                    pilaPatentes = ElegirOpcionMenu(opcion, pilaPatentes);
                 }
                 catch
                 {
@@ -46,39 +47,39 @@ namespace ControlDePatentes
             Console.WriteLine("11. Salir ");
         }
 
-        static void ElegirOpcionMenu(int opcion)
+        static Stack<string> ElegirOpcionMenu(int opcion, Stack<string> pilaPatentes)
         {
             switch (opcion)
             {
                 case 1:
-                    CrearPila();
+                    pilaPatentes = CrearPila(pilaPatentes);
                     break;
                 case 2:
-                    BorrarPila();
+                    pilaPatentes = BorrarPila(pilaPatentes);
                     break;
                 case 3:
-                    AgregarPatente();
+                    pilaPatentes = AgregarPatente(pilaPatentes);
                     break;
                 case 4:
-                    BorrarPatente();
+                    pilaPatentes = BorrarPatente(pilaPatentes);
                     break;
                 case 5:
-                    ListarPatentes();
+                    ListarPatentes(pilaPatentes);
                     break;
                 case 6:
-                    ListarUltimaPatente();
+                    ListarUltimaPatente(pilaPatentes);
                     break;
                 case 7:
-                    ListarPrimerPatente();
+                    ListarPrimerPatente(pilaPatentes);
                     break;
                 case 8:
-                    CantidadPatentes();
+                    CantidadPatentes(pilaPatentes);
                     break;
                 case 9:
-                    Opcion1();
+                    Opcion1(pilaPatentes);
                     break;
                 case 10:
-                    Opcion2();
+                    Opcion2(pilaPatentes);
                     break;
                 case 11:
                     Console.WriteLine("\n-SALIR-");
@@ -87,56 +88,92 @@ namespace ControlDePatentes
                     Console.WriteLine("-La opción elegida no es válida-\n");
                     break;
             }
+            return pilaPatentes;
         }
 
-        static void CrearPila()
+        static Stack<string> CrearPila(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 1. Crear Pila");
+            if (pilaPatentes == null)
+            {
+                pilaPatentes = new Stack<string>();
+                Console.WriteLine("-La pila fue creada con éxito-");
+            }
+            else
+            {
+                Console.WriteLine("-Ya existe una pila creada-");
+            }
+            return pilaPatentes;
         }
 
-        static void BorrarPila()
+        static Stack<string> BorrarPila(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 2. Borrar Pila");
+            if(pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para borrar!-");
+                return null;
+            }
+            if (pilaPatentes.Count != 0)
+            {
+                pilaPatentes.Clear();
+                Console.WriteLine("-La pila fue borrada con éxito-");
+            }
+            else
+            {
+                Console.WriteLine("-La pila ya esta borrada-");
+            }
+            return pilaPatentes;
         }
 
-        static void AgregarPatente()
+        static Stack<string> AgregarPatente(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 3. Agregar patente");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para guardar las patentes!-");
+                return null;
+            }
         }
 
-        static void BorrarPatente()
+        static Stack<string> BorrarPatente(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 4. Borrar patente");
+            if (pilaPatentes == null)
+            {
+                Console.WriteLine("-No existe una pila para borrar las patentes!-");
+                return null;
+            }
         }
 
-        static void ListarPatentes()
+        static void ListarPatentes(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 5. Listar todas las patentes");
         }
 
-        static void ListarPrimerPatente()
+        static void ListarPrimerPatente(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 6. Listar última patente.");
         }
 
-        static void ListarUltimaPatente()
+        static void ListarUltimaPatente(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 7. Listar primera patente.");
         }
 
-        static void CantidadPatentes()
+        static void CantidadPatentes(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 8. Cantidad de patentes.");
         }
 
-        static void Opcion1()
+        static void Opcion1(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 9. Opcion inventada 1.");
         }
 
-        static void Opcion2()
+        static void Opcion2(Stack<string> pilaPatentes)
         {
-
+            Console.WriteLine("- 10. Opcion inventada 2.");
         }
     }
 }
