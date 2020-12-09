@@ -1,0 +1,13 @@
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\bin\Debug\netcoreapp3.1\ControlDePatentes.exe
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\bin\Debug\netcoreapp3.1\ControlDePatentes.deps.json
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\bin\Debug\netcoreapp3.1\ControlDePatentes.runtimeconfig.json
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\bin\Debug\netcoreapp3.1\ControlDePatentes.runtimeconfig.dev.json
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\bin\Debug\netcoreapp3.1\ControlDePatentes.dll
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\bin\Debug\netcoreapp3.1\ControlDePatentes.pdb
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\obj\Debug\netcoreapp3.1\ControlDePatentes.csprojAssemblyReference.cache
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\obj\Debug\netcoreapp3.1\ControlDePatentes.AssemblyInfoInputs.cache
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\obj\Debug\netcoreapp3.1\ControlDePatentes.AssemblyInfo.cs
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\obj\Debug\netcoreapp3.1\ControlDePatentes.csproj.CoreCompileInputs.cache
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\obj\Debug\netcoreapp3.1\ControlDePatentes.dll
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\obj\Debug\netcoreapp3.1\ControlDePatentes.pdb
+C:\Users\m91_a\Desktop\Final EDD\ControlDePatentes\ControlDePatentes\obj\Debug\netcoreapp3.1\ControlDePatentes.genruntimeconfig.cache

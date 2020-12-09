@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlDePatentes", "ControlDePatentes\ControlDePatentes.csproj", "{7D86B25D-FA1C-4C4E-9823-93110DC15C34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D86B25D-FA1C-4C4E-9823-93110DC15C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D86B25D-FA1C-4C4E-9823-93110DC15C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D86B25D-FA1C-4C4E-9823-93110DC15C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D86B25D-FA1C-4C4E-9823-93110DC15C34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FC6964A-C4B1-4803-87FC-0E0FA4DC2D40}
+	EndGlobalSection
+EndGlobal
