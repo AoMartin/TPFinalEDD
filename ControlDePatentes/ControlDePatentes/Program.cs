@@ -175,7 +175,13 @@ namespace ControlDePatentes
                 return;
             }
             Console.WriteLine("Primer patente en la pila: ");
-            //TODO
+
+            Stack<string> aux = pilaPatentes;
+            while(aux.Count > 1)
+            {
+                aux.Pop();
+            }
+            Console.WriteLine("1 - " + aux.Peek());
         }
 
         static void ListarUltimaPatente(Stack<string> pilaPatentes)
