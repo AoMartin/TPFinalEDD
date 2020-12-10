@@ -22,6 +22,7 @@ namespace ControlDePatentes
 
                     //Chequea la opcion elegida dentro de un switch y alli modifica la pila
                     pilaPatentes = ElegirOpcionMenu(opcion, pilaPatentes);
+                    
                 }
                 catch
                 {
@@ -144,19 +145,33 @@ namespace ControlDePatentes
                     Console.WriteLine("\n* Ingrese las 3 letras de la patente: ");
                     string letras = Convert.ToString(Console.ReadLine());
                     nuevaPatente = letras.ToUpper();
+
+                    if(nuevaPatente.Length != 3)
+                    {
+                        Console.WriteLine("\n-Por favor solo ingrese 3 letras-\n");
+                        nuevaPatente = "";
+                    }
                 }
                 catch
                 {
                     Console.WriteLine("\n-Por favor solo ingrese 3 letras-\n");
                 }
             }
-            while (nuevaPatente.Length < 3)
+            while (nuevaPatente.Length != 6)
             {
                 try
                 {
                     Console.WriteLine("\n* Ingrese los 3 números de la patente: ");
                     int números = Convert.ToInt32(Console.ReadLine());
-                    nuevaPatente += números;
+                    
+                    if (números.ToString().Length != 3)
+                    {
+                        Console.WriteLine("\n-Por favor solo ingrese 3 números-\n");
+                    }
+                    else
+                    {
+                        nuevaPatente += números;
+                    }
                 }
                 catch
                 {
@@ -184,14 +199,14 @@ namespace ControlDePatentes
         static void ListarPatentes(Stack<string> pilaPatentes)
         {
             Console.WriteLine("- 5. Listar todas las patentes");
-            if (pilaPatentes == null)
+            if (pilaPatentes == null || pilaPatentes.Count == 0)
             {
                 Console.WriteLine("-No existe una pila para listar patentes!-");
                 return;
             }
 
             int ordenPatente = 1;
-            foreach( string patente in pilaPatentes)
+            foreach ( string patente in pilaPatentes)
             {
                 Console.WriteLine(ordenPatente + " - " + patente);
                 ordenPatente++;
@@ -200,32 +215,27 @@ namespace ControlDePatentes
 
         static void ListarPrimerPatente(Stack<string> pilaPatentes)
         {
-            Console.WriteLine("- 7. Listar primera patente.");
+            Console.WriteLine("- 7. Listar primera patente. (Tope de la pila)");
             if (pilaPatentes == null)
             {
                 Console.WriteLine("-No existe una pila para listar patentes!-");
                 return;
             }
             Console.WriteLine("Primer patente en la pila: ");
-
-            Stack<string> aux = pilaPatentes;
-            while(aux.Count > 1)
-            {
-                aux.Pop();
-            }
-            Console.WriteLine("1 - " + aux.Peek());
+            Console.WriteLine("1 - " + pilaPatentes.Peek());
         }
 
         static void ListarUltimaPatente(Stack<string> pilaPatentes)
         {
-            Console.WriteLine("- 6. Listar última patente.");
+            Console.WriteLine("- 6. Listar última patente. (Fondo de la pila)");
             if (pilaPatentes == null)
             {
                 Console.WriteLine("-No existe una pila para listar patentes!-");
                 return;
             }
             Console.WriteLine("Ultima patente en la pila: ");
-            Console.WriteLine(pilaPatentes.Count + " - " + pilaPatentes.Peek());
+            Stack<string> aux = new Stack<string>(pilaPatentes);
+            Console.WriteLine(pilaPatentes.Count + " - " + aux.Peek());
         }
 
         static void CantidadPatentes(Stack<string> pilaPatentes)
@@ -267,19 +277,25 @@ namespace ControlDePatentes
             }
 
             //Si desea listar primero las patentes en la pila para saber cual modificar
-            Console.WriteLine("-Desea primero listar las patentes?: (ingrese 'si' para aceptar)-");
+            Console.WriteLine("-Desea primero listar las patentes?: (pulsar -enter- para aceptar)-");
             string opcion = Console.ReadLine().ToLower();
-            if(opcion == "si")
+            if(opcion == "")
                 ListarPatentes(pilaPatentes);
 
             //Ahora se le pide al usuario ingrese el numero de orden en la pila de la patente a modificar
             int ordenPatente = 0;
-            while(ordenPatente== 0)
+            while(ordenPatente == 0)
             {
                 try
                 {
                     Console.WriteLine("* Ingrese el número de orden de la patente que desea modificar: ");
                     ordenPatente = Convert.ToInt32(Console.ReadLine());
+
+                    if(ordenPatente>pilaPatentes.Count || ordenPatente <= 0)
+                    {
+                        ordenPatente = 0;
+                        Console.WriteLine("-Ingrese un número de orden válido-");
+                    }
                 }
                 catch
                 {
@@ -290,7 +306,7 @@ namespace ControlDePatentes
             //Se crea una pila auxiliar para guardar los datos q se iran sacando de la principal
             //hasta llegar al número de orden de la patente a modificar
             Stack<string> aux = new Stack<string>();
-            while(pilaPatentes.Count != ordenPatente)
+            while(aux.Count < ordenPatente-1)
             {
                 string aux_patente = pilaPatentes.Pop();
                 aux.Push(aux_patente);
@@ -306,19 +322,33 @@ namespace ControlDePatentes
                     Console.WriteLine("\n* Ingrese las 3 letras de la patente: ");
                     string letras = Convert.ToString(Console.ReadLine());
                     nuevaPatente = letras.ToUpper();
+
+                    if (nuevaPatente.Length != 3)
+                    {
+                        Console.WriteLine("\n-Por favor solo ingrese 3 letras-\n");
+                        nuevaPatente = "";
+                    }
                 }
                 catch
                 {
                     Console.WriteLine("\n-Por favor solo ingrese 3 letras-\n");
                 }
             }
-            while (nuevaPatente.Length < 3)
+            while (nuevaPatente.Length != 6)
             {
                 try
                 {
                     Console.WriteLine("\n* Ingrese los 3 números de la patente: ");
                     int números = Convert.ToInt32(Console.ReadLine());
-                    nuevaPatente += números;
+
+                    if (números.ToString().Length != 3)
+                    {
+                        Console.WriteLine("\n-Por favor solo ingrese 3 números-\n");
+                    }
+                    else
+                    {
+                        nuevaPatente += números;
+                    }
                 }
                 catch
                 {
@@ -332,7 +362,7 @@ namespace ControlDePatentes
             Console.WriteLine("\n-La patente fue modificada correctamente-\n");
 
             //Se reconstruye la pila original
-            while(aux.Count == 0)
+            while(aux.Count != 0)
             {
                 pilaPatentes.Push( aux.Pop() );
             }
